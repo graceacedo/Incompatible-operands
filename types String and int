@@ -1,0 +1,29 @@
+/**
+		 * Localizar cliente en lista de clientes introduciendo el código de cliente en los datos de comparación.
+		 * @param void
+		 * @return int - posición del elemento. Si no se encuentra: devuelve -1.
+		 */
+		private int localizarCliente() {
+				boolean fallo = false;
+				int codigo = -1;
+				
+				//Control del código introducido por el usuario.
+				do{
+						try{
+								System.out.print("\tIntroducir código de cliente: ");
+								codigo = new Integer(read.nextLine());
+								fallo = false;		
+						}
+						catch( NumberFormatException ex){
+								System.out.println("\n\tIntroducir un valor numérico: ");
+								fallo = true;
+						}
+				}while(fallo);
+				
+				for(int i=0; i<getClientes().size(); i++){
+						if(getClientes().get(i).getCodigo() == codigo){
+								return i;
+						}
+				}
+				return -1;
+		}
